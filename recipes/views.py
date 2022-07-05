@@ -1,13 +1,6 @@
+from http.client import REQUEST_HEADER_FIELDS_TOO_LARGE
 from django.shortcuts import render
 
 
 def home(request):
     return render(request, 'recipes/home.html')
-
-
-def contact(request):
-    pass
-
-
-def about(request):
-    pass
