@@ -37,12 +37,12 @@ class RegisterForm(forms.ModelForm):
             self.fields['confirm_password'], 'Repeat your password')
 
     password = forms.CharField(
-        required=True, widget=forms.PasswordInput, label='Password',
+        required=True, widget=forms.PasswordInput(), label='Password',
         validators=[strong_password]
     )
 
     confirm_password = forms.CharField(
-        required=True, widget=forms.PasswordInput, label='Confirm Password',
+        required=True, widget=forms.PasswordInput(), label='Confirm Password',
     )
 
     class Meta:
@@ -58,7 +58,7 @@ class RegisterForm(forms.ModelForm):
             }
         }
         widgets = {
-            'password': forms.PasswordInput
+            'password': forms.PasswordInput()
         }
 
     def clean(self):
@@ -68,7 +68,7 @@ class RegisterForm(forms.ModelForm):
 
         if password != confirm_password:
             password_confirmation_error = ValidationError(
-                'Passwords must be equal',
+                'Passwords must be equal.',
                 code='invalid'
             )
             raise ValidationError({
